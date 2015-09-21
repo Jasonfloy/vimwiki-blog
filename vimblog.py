@@ -151,6 +151,7 @@ class list(BaseHandler):
     '''
 
     def get(self, name='*'):
+        print 'name=', name
         lists = getList(str(name))
         if name == '*':
             title = 'zpf'
