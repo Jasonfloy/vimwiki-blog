@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block  body %}
+{%if content == '0'%}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        不好意思,没有找到和 <b>{{title}}</b> 有关的内容!<br>
+        所以,这个就应该是传说中的404界面了!<br>
+        <br>
+
+        这里界面真是你戳哪里戳出来的? 你怎么看到这个传说的?<br>
+        请给zpf发邮件告诉他: <br>kmust091314@gmail.com<br>
+        或者用disqus留言!<br>
+        <br>
+        对了,别自己瞎改url啊!
+    </div>
+</div>
+{%else%}
+<h1>{{title}}</h1>
+<sub class="badge">{{count}}</sub>
+{{content}}
+{%end%}
+
+<!--评论-->
+<div id="disqus_thread"></div>
+
+<noscript>要查看或参与评论，请启用 JavaScript 支持 <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+{% end %}
+
+{% block  script %}
+<script type="text/javascript">
+var disqus_shortname = 'zpf';
+var disqus_url = ''+location.pathname;
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+ var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+ dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+ })();
+</script>
+<!--
+TOC
+-->
+<script type="text/javascript">
+$(function() {
+        //Calls the tocify method on your HTML div.
+        var toc = $("#toc").tocify({ selectors: "h1,h2,h3,h4,h5" }).data("toc-tocify"); 
+        });
+</script>
+{% end %}
