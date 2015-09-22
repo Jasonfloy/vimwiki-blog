@@ -3,5 +3,5 @@ while true
 do
     echo update ${PWD}
     git pull
-    sleep 5
+    sleep 200
 done
