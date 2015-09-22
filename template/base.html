@@ -50,13 +50,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="/list">全部</a></li>
-                            <li><a href="/list/linux">linux</a></li>
-                            <li><a href="/list/vim">vim</a></li>
-                            <li><a href="/list/python">python</a></li>
-                            <li><a href="/list/postgres">postgres</a></li>
-                            <li><a href="/list/web">前端</a></li>
-                            <li><a href="/list/linux">关于我</a></li>
+                            <li id='list'><a href="/list">全部</a></li>
+                            <li id='linux'><a href="/list/linux">linux</a></li>
+                            <li id='vim'><a href="/list/vim">vim</a></li>
+                            <li id='python'><a href="/list/python">python</a></li>
+                            <li id='postgres'><a href="/list/postgres">postgres</a></li>
+                            <li id='web'><a href="/list/web">前端</a></li>
+                            <li id='about'><a href="/list/linux">关于我</a></li>
                         </ul> 
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
@@ -89,6 +89,13 @@
         <script src="/lib_static/lib/jquery-2.1.1.min.js"></script>
         <script src="/lib_static/lib/underscore-min.js?v=3"></script>
         <script src="/static/base.js"></script>
+        <script>
+            $(function(){
+                url = window.location.href;
+                abs = url.split('/').pop();
+                $('#'+ abs).addClass('active')
+            });
+        </script>
 
         {% block js %}
         {% end %}
