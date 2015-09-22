@@ -201,7 +201,7 @@ class about(BaseHandler):
     '''
 
     def get(self):
-        self.render(tornado_bz.getTName(self, 'zpf'))
+        self.render(tornado_bz.getTName(self, 'about'))
 
 
 class blog(BaseHandler):
