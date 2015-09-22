@@ -24,6 +24,9 @@
             .navbar-nav{
                 margin-right:100px;
             }
+            .footer-container{
+                text-align:center;
+            }
         </style>
         {% block css %}
         {% end %}
@@ -71,12 +74,13 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <footer>
+        <footer>
+            <div class="footer-container">
                 {%import time_bz %}
-                <p>&copy;版权所有   2014-{{time_bz.getYearMonth(fmt='%Y')}} <a href="">赵鹏飞</a>&nbsp;&nbsp;</p>
-            </footer>
-        </div>
+                <p>Copyright © 2014-{{time_bz.getYearMonth(fmt='%Y')}} <a href="">赵鹏飞</a>&nbsp;&nbsp; 版权所有</p>
+                <!--p>技术支持: xxxxx &nbsp;&nbsp;</p-->
+            </div>
+        </footer>
 
         <script src="/lib_static/lib/vue.js"></script>
         <script src="/lib_static/lib/jquery-2.1.1.min.js"></script>
