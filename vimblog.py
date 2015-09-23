@@ -106,10 +106,9 @@ def refreshKeyNamesCount(name, count):
 
 def addClickCount(name):
     global click_count
-    click_count = increase(click_count, name)
-    file_name = click_path + name
-    print 'file_name=', file_name
-    save(file_name, click_count[name])
+    click_count = increase(click_count, name)  # 点击数增加1次
+    count_path = click_path + name
+    save(count_path, click_count[name])  # 点击次数写入以[name]命名的文件
     if click_count[name] % 5 == 0:
         saveClickCount()
     return click_count[name]
@@ -138,7 +137,7 @@ def getHtmlContent(name):
         name_file.close()
         return content
     except IOError:
-        #print public_bz.getExpInfoAll() # vimwiki中每个生成的html都默认会调一个style.css来,所以这里总是会读不存在的文件style.css.html所以报错
+        # print public_bz.getExpInfoAll() # vimwiki中每个生成的html都默认会调一个style.css来,所以这里总是会读不存在的文件style.css.html所以报错
         return '0'
 
 
@@ -203,6 +202,7 @@ class main(BaseHandler):
 class about(BaseHandler):
 
     '''
+    关于我的介绍页面
     '''
 
     def get(self):

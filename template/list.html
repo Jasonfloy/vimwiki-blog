@@ -19,7 +19,7 @@
             {%if item[0].decode('utf-8') in click_count%}
             <sub class="badge  on-show">{{ click_count[item[0].decode('utf-8')]}}</sub>
             {%end%}
-            <sub class="badge pull-right some-show">{{ time.strftime('%m月%d日%H:%M:%S', item[1])  }}</sub>
+            <sub class="badge pull-right some-show">{{ time.strftime('%Y年%m月%d日%H:%M:%S', item[1])  }}</sub>
         </a>
         {%end%}
     </div>

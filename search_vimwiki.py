@@ -44,7 +44,7 @@ class SearchWiki:
             path_wiki = path + '/' + wiki
             if os.path.isdir(path_wiki):  #过滤掉目录
                 continue
-            if( fnmatch.fnmatchcase(wiki.upper(), ('*%s*' % self.wiki_name).upper()) ): # 测试两个字符串是否匹配,大小写敏感
+            if( fnmatch.fnmatchcase(wiki.upper(), ('*%s*' % self.wiki_name).upper()) ): # 测试字符串是否匹配,大小写敏感,这里是根据name筛选记录
                 modify_time = time.localtime(os.path.getctime(path_wiki))  # os.path.getmtime(f)获取文件的最后修改时间
                 m = pattern.search(wiki)
                 if m is None:  # 隐藏的文件不要参与查找
