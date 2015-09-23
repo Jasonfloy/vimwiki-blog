@@ -18,17 +18,23 @@ HTML_PATH = home + '/Dropbox/knowledge/html/'
 WIKI_PATH = home + '/Dropbox/knowledge/data/'
 CLICK_COUNT = home + '/click_count'
 click_path = home + '/click/'
+click_count = {}
 
-SITE = 'site'
 key_names = {}
 key_names_sorted = []
+
 new_key_names = []
-click_count = {}
+
+SITE = 'site'
 black_keys = ['11', u'香港']
+
 SHOW_COUNT = 15  # 首页显示几个详情
 
 
 def popSome():
+    '''
+    过滤掉关键字黑名单black_keys中的关键字
+    '''
     global key_names
     for black_key in black_keys:
         if black_key in key_names:
@@ -44,10 +50,7 @@ def getKeyNames():
         if content != '':
             key_names = json.loads(content)
             popSome()
-            key_names_sorted = sorted(
-                key_names.items(),
-                key=lambda by: by[1],
-                reverse=True)
+            key_names_sorted = sorted(key_names.items(), key=lambda by: by[1], reverse=True)
         f.close()
     except IOError:
         print public_bz.getExpInfoAll()
@@ -104,7 +107,9 @@ def refreshKeyNamesCount(name, count):
 def addClickCount(name):
     global click_count
     click_count = increase(click_count, name)
-    save(click_path + name, click_count[name])
+    file_name = click_path + name
+    print 'file_name=', file_name
+    save(file_name, click_count[name])
     if click_count[name] % 5 == 0:
         saveClickCount()
     return click_count[name]
@@ -185,7 +190,7 @@ def getTenContent(name):
 class main(BaseHandler):
 
     '''
-    显示 blog 列表
+    首页,显示blog列表
     '''
 
     def get(self, name='*'):

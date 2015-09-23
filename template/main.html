@@ -4,14 +4,11 @@
 {%for list in lists%}
 <div class="panel panel-default">
     <div class="panel-body">
-        <a href='/blog/{{list.name}}'>
-            <h2 class='title_bz'>
-                {{list.name}}
-            </h2>
+        <a href='/blog/{{list.name}}.html'>
+            <h2 class='title_bz'>{{list.name}}</h2>
         </a>
-        {{ time.strftime('%m月%d日%H:%M:%S', list.time)  }}
+        {{ time.strftime('%Y年%m月%d日%H:%M:%S', list.time)  }}
         <hr/>
-
         {{list.content}}
     </div>
 </div>

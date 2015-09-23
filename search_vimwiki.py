@@ -15,9 +15,6 @@ sys.setdefaultencoding('utf-8')
 
 NOT_IN = ['search', 'site', 'wiki_index']  # 添加wiki显示时忽略的文件名
 
-WIKI_INDEX = 'wiki_index'
-
-
 class SearchWiki:
     def __init__(self, wiki_name):
         self.wiki_name = wiki_name
@@ -26,6 +23,9 @@ class SearchWiki:
         self.wikis_time = {}
 
     def getHtmlNameList(self, html_path):
+        '''
+        取wiki生成的html文件夹下的所有html文件名
+        '''
         html_list = []
         for html in os.listdir(html_path):
             html = os.path.basename(html)
@@ -35,20 +35,22 @@ class SearchWiki:
         return html_list
 
     def search(self, path='.', html_path='.'):
-        '''找到wiki文件名,并加上时间'''
+        '''
+        找到wiki文件名,并加上时间
+        '''
         html_list = self.getHtmlNameList(html_path)
-        pattern = re.compile(r'^\.')
+        pattern = re.compile(r'^\.') # 匹配以.开头的隐藏文件
         for wiki in os.listdir(path):
             path_wiki = path + '/' + wiki
-            if os.path.isdir(path_wiki):
+            if os.path.isdir(path_wiki):  #过滤掉目录
                 continue
-            if(fnmatch.fnmatchcase(wiki.upper(), ('*%s*' % self.wiki_name).upper())):
-                modify_time = time.localtime(os.path.getmtime(path_wiki))  # os.path.getmtime(f)获取文件的最后修改时间
+            if( fnmatch.fnmatchcase(wiki.upper(), ('*%s*' % self.wiki_name).upper()) ): # 测试两个字符串是否匹配,大小写敏感
+                modify_time = time.localtime(os.path.getctime(path_wiki))  # os.path.getmtime(f)获取文件的最后修改时间
                 m = pattern.search(wiki)
                 if m is None:  # 隐藏的文件不要参与查找
                     wiki = wiki.rsplit('.', 1)
                     wiki = wiki[0]
-                    if wiki in NOT_IN:
+                    if wiki in NOT_IN:  # 过滤掉黑名单中的wiki名
                         continue
                     if wiki in html_list:
                         self.wikis_time[wiki] = modify_time
