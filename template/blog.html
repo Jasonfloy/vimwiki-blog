@@ -21,27 +21,37 @@
 {{content}}
 {%end%}
 
-<!--评论-->
+<!--使用DisQUS的评论-->
 <div id="disqus_thread"></div>
 
-<noscript>要查看或参与评论，请启用 JavaScript 支持 <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>要查看或参与评论,请启用 JavaScript 支持 <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 {% end %}
 
-{% block  script %}
+{% block  js %}
+<!--使用DisQUS的评论-->
 <script type="text/javascript">
-var disqus_shortname = 'zpf';
-var disqus_url = ''+location.pathname;
+var disqus_shortname = 'jasonfloy';
 /* * * DON'T EDIT BELOW THIS LINE * * */
 (function() {
- var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
- dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
- (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
- })();
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
 </script>
-<!--
-TOC
--->
+<!--显示评论数量-->
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'jasonfloy';
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<!-- TOC -->
 <script type="text/javascript">
 $(function() {
         //Calls the tocify method on your HTML div.
