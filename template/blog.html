@@ -16,9 +16,14 @@
     </div>
 </div>
 {%else%}
-<h1>{{title}}</h1>
-<sub class="badge">{{count}}</sub>
-{{content}}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h1>{{title}}</h1>
+        <sub class="badge">{{count}}</sub>
+        <hr/>
+        {{content}}
+    </div>
+</div>
 {%end%}
 
 <!--使用DisQUS的评论,加在body结束之前-->
